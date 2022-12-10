@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="ProductoBuscado" package="Modelo" visibility="public" xPosition="722.0" yPosition="498.0">
+      <Fields>
+        <Field name="cod" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="cod"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCod" returnType="int" visibility="public"/>
+        <Method name="setCod" returnType="void" visibility="public">
+          <Argument type="int" name="cod"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ListarProductos" package="Modelo" visibility="public" xPosition="646.0" yPosition="261.0">
+      <Fields>
+        <Field name="con" type="Mysql" visibility="package"/>
+        <Field name="cn" type="Connection" visibility="package"/>
+        <Field name="pr" type="double" visibility="public"/>
+        <Field name="n" type="String" visibility="public"/>
+        <Field name="tf" type="double" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="MostrarTabla" returnType="void" visibility="public">
+          <Argument type="JTable" name="tabla"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Registro" package="Modelo" visibility="public" xPosition="356.0" yPosition="173.0">
+      <Fields>
+        <Field name="con" type="Mysql" visibility="package"/>
+        <Field name="cn" type="Connection" visibility="package"/>
+        <Field name="pr" type="double" visibility="public"/>
+        <Field name="cod" type="int" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="registrarbd" returnType="void" visibility="public">
+          <Argument type="Venta" name="v"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EliminarProducto" package="Modelo" visibility="public" xPosition="573.0" yPosition="10.0">
+      <Fields>
+        <Field name="con" type="Mysql" visibility="package"/>
+        <Field name="cn" type="Connection" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="EliminarProducto" returnType="void" visibility="public">
+          <Argument type="String" name="cod"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BuscarProducto" package="Modelo" visibility="public" xPosition="1023.0" yPosition="479.0">
+      <Fields>
+        <Field name="con" type="Mysql" visibility="package"/>
+        <Field name="cn" type="Connection" visibility="package"/>
+        <Field name="c" type="String" visibility="public"/>
+        <Field name="pr" type="int" visibility="public"/>
+        <Field name="s" type="int" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="BuscarProducto" returnType="void" visibility="public">
+          <Argument type="ProductoBuscado" name="pb"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Mysql" package="Conexion" visibility="public" xPosition="1152.0" yPosition="93.0">
+      <Fields>
+        <Field name="cn" type="Connection" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="conectar" returnType="Connection" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Venta" package="Modelo" visibility="public" xPosition="276.0" yPosition="458.0">
+      <Fields>
+        <Field name="cod" type="int" visibility="private"/>
+        <Field name="cliente" type="String" visibility="private"/>
+        <Field name="cantidad" type="int" visibility="private"/>
+        <Field name="fecha" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="cod"/>
+          <Argument type="String" name="cliente"/>
+          <Argument type="int" name="cantidad"/>
+          <Argument type="String" name="fecha"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCod" returnType="int" visibility="public"/>
+        <Method name="setCod" returnType="void" visibility="public">
+          <Argument type="int" name="cod"/>
+        </Method>
+        <Method name="getCliente" returnType="String" visibility="public"/>
+        <Method name="setCliente" returnType="void" visibility="public">
+          <Argument type="String" name="cliente"/>
+        </Method>
+        <Method name="getCantidad" returnType="int" visibility="public"/>
+        <Method name="setCantidad" returnType="void" visibility="public">
+          <Argument type="int" name="cantidad"/>
+        </Method>
+        <Method name="getFecha" returnType="String" visibility="public"/>
+        <Method name="setFecha" returnType="void" visibility="public">
+          <Argument type="String" name="fecha"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="con" source="Modelo.ListarProductos" target="Conexion.Mysql" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Modelo.Registro" target="Modelo.Venta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="con" source="Modelo.BuscarProducto" target="Conexion.Mysql" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="con" source="Modelo.EliminarProducto" target="Conexion.Mysql" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="con" source="Modelo.Registro" target="Conexion.Mysql" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Modelo.BuscarProducto" target="Modelo.ProductoBuscado" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
